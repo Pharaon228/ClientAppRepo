@@ -28,12 +28,12 @@ module.exports = {
         activeNavElementAlt: '#927522',
         activeNavElement: '#ADD8E6',
         bgNotify: '#DF0000',
-        milkWhite: '#FFF8DC', // Обновлен цвет молока
-        milkCream: '#FAF0E6', // Обновлен цвет молока
+        milkWhite: '#FFF8DC', 
+        milkCream: '#FAF0E6', 
       },
       scale: {
-        '250': '2.5', // 250%
-        '300': '3',   // 300%
+        '250': '2.5',
+        '300': '3',   
         '200': '2.0',
         '180': '1.8',
         '190': '1.9',
@@ -95,7 +95,7 @@ module.exports = {
         energy:
           'inset 0px -2px 3px 0px #0000005c, inset 0px 2px 3px 0px #ffffff5c;',
         light: '0 0 32px 6px #ffff007a, inset 1px -2px 5px 0 #ffffff8f',
-        milk: 'inset 0px -7px 6px 0px #FFF8DC, inset 0px 7px 6px 0px #FAF0E6', 
+        milk: 'inset 0px -7px 6px 0px #FFF8DC, inset 0px 7px 6px 0px #FAF0E6',
       },
 
       transform: {

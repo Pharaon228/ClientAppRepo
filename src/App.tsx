@@ -4,7 +4,10 @@ import AppScreen from 'components/Appscreen'
 function App() {
   return (
 
-    <AppScreen />
+    <div
+    >
+      <AppScreen />
+    </div>
 
   )
 }

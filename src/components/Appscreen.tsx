@@ -1,81 +1,102 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import CatContainer from './CatContainer';
+import { useEffect } from 'react';
+//import { motion, AnimatePresence } from 'framer-motion';
+//import CatContainer from './CatContainer';
+import background from 'assets/images/topline.png';
+//import mainBack from 'assets/images/mainBackground.svg';
+import milkAirDrop from 'assets/images/buttons/MilkAirDrop.png';
+import nft from 'assets/images/buttons/Nft.png';
+import shop from 'assets/images/buttons/Shop.png';
+//import aboutUs from 'assets/images/buttons/AboutUs.png';
+import game from 'assets/images/buttons/Game.png';
+//import CountUp from 'react-countup';
+import { useInView } from 'react-intersection-observer';
+import leftColumn from 'assets/images/buttons/left.png';
+import rightColumn from 'assets/images/buttons/right.png';
+import './styles.css';
+import './aos.css';
+import AOS from 'aos';
 
 function AppScreen() {
-    const [showFirstMessage, setShowFirstMessage] = useState(true);
-    const [showSecondMessage, setShowSecondMessage] = useState(false);
-    const [showCatComponent, setShowCatComponent] = useState(false);
     useEffect(() => {
-        // Показ второго сообщения через 2 секунды
-        const secondMessageTimeout = setTimeout(() => {
-            setShowSecondMessage(true);
+
+        AOS.init({
+            duration: 1000,
+        });
+    }, []);
+    //const [showCatComponent, setShowCatComponent] = useState(false);
+    useEffect(() => {
+
+        const catComponentTimeout = setTimeout(() => {
+            //setShowCatComponent(true);
         }, 2000);
 
-        // Скрытие текстов и показ кота через 5 секунд
-        const catComponentTimeout = setTimeout(() => {
-            setShowFirstMessage(false);
-            setShowSecondMessage(false);
-            setShowCatComponent(true); // Показываем компонент с котом
-        }, 5000);
-
         return () => {
-            clearTimeout(secondMessageTimeout);
             clearTimeout(catComponentTimeout);
         };
     }, []);
+    //const [randomValue1, setRandomValue1] = useState(0);
+    //const [randomValue2, setRandomValue2] = useState(0);
+    //const [randomValue3, setRandomValue3] = useState(0);
+    //const [randomValue4, setRandomValue4] = useState(0);
+
+    const { ref: leftContainerRef, inView: isLeftInView } = useInView({
+        triggerOnce: false,
+        threshold: 0.1,
+    });
+
+    useEffect(() => {
+        if (isLeftInView) {
+            // setRandomValue1(Math.floor(Math.random() * (150000 - 100000 + 1)) + 100000);
+            // setRandomValue2(Math.floor(Math.random() * (150000 - 100000 + 1)) + 100000);
+            // setRandomValue3(Math.floor(Math.random() * (150000 - 100000 + 1)) + 100000);
+            // setRandomValue4(Math.floor(Math.random() * (150000 - 100000 + 1)) + 100000);
+        }
+    }, [isLeftInView]);
+
+
 
     return (
-        <div className="w-screen h-screen bg-gray-900 flex items-center justify-center">
-            <div className="flex flex-col items-center justify-center">
-                <AnimatePresence>
-                    {showFirstMessage && (
-                        <motion.div
-                            className="text-center"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 1 }}
-                        >
-                            <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
-                                Welcome to CatAppGame
-                            </h1>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
+        <section id="main">
+            <img src={background} alt="topline" className="topline" />
 
-                <AnimatePresence>
-                    {showSecondMessage && (
-                        <motion.div
-                            className="text-center"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 1, delay: 1 }} // Задержка перед анимацией второго сообщения
-                        >
-                            <p className="text-lg md:text-2xl text-gray-400">
-                                Let's get started!
-                            </p>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
+            <header>
+                <div data-aos="fade-right">
+                    <a href="#" target="_blank"><img src={nft} alt="nft" className="hover" /></a>
+                    <a href="#" target="_blank"><img src={game} alt="game" className="hover" /></a>
+                </div>
+                <div data-aos="fade-left">
+                    <a href="#" target="_blank"><img src={milkAirDrop} alt="airdrop" className="hover" /></a>
+                    <a href="#" target="_blank"><img src={shop} alt="shop" className="hover" /></a>
+                </div>
+            </header>
 
-                {/* Показ компонента с котом после скрытия текстов */}
-                <AnimatePresence>
-                    {showCatComponent && (
-                        <motion.div
-                            className="flex items-center justify-center"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 1 }}
-                        >
-                            <CatContainer /> {/* Компонент с котом */}
-                        </motion.div>
-                    )}
-                </AnimatePresence>
+            <div className="container">
+                {/* Левый блок */}
+                <div
+                    className="left"
+                    data-aos="zoom-in"
+                    data-aos-offset="0"
+                >
+                    <img src={leftColumn} alt="left-block" />
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis veniam ut quis numquam commodi reiciendis quod voluptates velit cum. Facere!
+                    </p>
+                </div>
+
+                {/* Правый блок */}
+                <div
+                    ref={leftContainerRef}
+                    className="right"
+                    data-aos="zoom-in"
+                    data-aos-offset="0"
+                >
+                    <img src={rightColumn} alt="right-block" />
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, numquam harum dicta dignissimos dolorum laudantium doloribus esse. Delectus, iusto neque.
+                    </p>
+                </div>
             </div>
-        </div>
+        </section>
     );
 }
 
