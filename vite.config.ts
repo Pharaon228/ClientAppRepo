@@ -64,6 +64,5 @@ export default defineConfig({
         entryFileNames: "assets/js/[name]-[hash].js",
       },
     },
-    assetsInlineLimit: 8192, // Inline файлы до 8kb
   },
 });
