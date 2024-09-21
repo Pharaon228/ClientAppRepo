@@ -7,7 +7,7 @@ import int1 from 'assets/img/int1.svg';
 import int2 from 'assets/img/int2.svg';
 import int3 from 'assets/img/int3.png';
 import int4 from 'assets/img/int4.svg';
-import leftBlock from 'assets/img/mlk kntnr.png';
+import leftBlock from 'assets/img/mlkKntnr.png';
 import rightBlock from 'assets/img/right.png';
 import orangeTailMobile from 'assets/img/orange-tail-mobile.png';
 import orangeTail1080 from 'assets/img/orange-tail-1080.png';
@@ -35,7 +35,7 @@ import shop from 'assets/img/shop.png';
 //import aboutUs from 'assets/images/buttons/AboutUs.png';
 
 //import CountUp from 'react-countup';
-import { useInView } from 'react-intersection-observer';
+//import { useInView } from 'react-intersection-observer';
 
 import './styles.css';
 import './aos.css';
@@ -65,73 +65,76 @@ function AppScreen() {
     //const [randomValue3, setRandomValue3] = useState(0);
     //const [randomValue4, setRandomValue4] = useState(0);
 
-    const { ref: leftContainerRef, inView: isLeftInView } = useInView({
-        triggerOnce: false,
-        threshold: 0.1,
-    });
+    //const { ref: leftContainerRef, inView: isLeftInView } = useInView({
+    //    triggerOnce: false,
+    //    threshold: 0.1,
+    //});
 
-    useEffect(() => {
+    {/* useEffect(() => {
         if (isLeftInView) {
             // setRandomValue1(Math.floor(Math.random() * (150000 - 100000 + 1)) + 100000);
             // setRandomValue2(Math.floor(Math.random() * (150000 - 100000 + 1)) + 100000);
             // setRandomValue3(Math.floor(Math.random() * (150000 - 100000 + 1)) + 100000);
             // setRandomValue4(Math.floor(Math.random() * (150000 - 100000 + 1)) + 100000);
         }
-    }, [isLeftInView]);
+    }, [isLeftInView]);*/}
 
 
 
     return (
-        <section id="main">
-            <img src={topline} alt="topline" className="topline" />
+        <>
+            <section id="main">
+                <img src={topline} alt="topline" className="topline" />
 
-            <header>
-                <div data-aos="fade-right">
-                    <a href="#nft"><img src={nft} alt="nft" className="hover" /></a>
-                    <a href="#game"><img src={game} alt="game" className="hover" /></a>
+                <header>
+                    <div data-aos="fade-right">
+                        <a href="#nft"><img src={nft} alt="nft" className="hover" /></a>
+                        <a href="#game"><img src={game} alt="game" className="hover" /></a>
+                    </div>
+                    <div data-aos="fade-left">
+                        <a href="#shop"><img src={shop} alt="shop" className="hover" /></a>
+                        <a href="#airdrop"><img src={airdrop} alt="airdrop" className="hover" /></a>
+
+                    </div>
+                </header>
+
+                <img src={logo} alt="catap" className="logo" data-aos="zoom-out" />
+
+                <div className="int" data-aos="fade-up">
+                    <img src={int1} alt="int1" />
+                    <img src={int2} alt="int2" />
+                    <img src={int3} alt="int3" />
+                    <img src={int4} alt="int4" />
                 </div>
-                <div data-aos="fade-left">
-                    <a href="#shop"><img src={shop} alt="shop" className="hover" /></a>
-                    <a href="#airdrop"><img src={airdrop} alt="airdrop" className="hover" /></a>
 
-                </div>
-            </header>
-
-            <img src={logo} alt="catap" className="logo" data-aos="zoom-out" />
-
-            <div className="int" data-aos="fade-up">
-                <img src={int1} alt="int1" />
-                <img src={int2} alt="int2" />
-                <img src={int3} alt="int3" />
-                <img src={int4} alt="int4" />
-            </div>
-
-            <div className="container">
-                <div className="left" data-aos="zoom-in" data-aos-offset="0">
-                    <img src={leftBlock} alt="left-block" />
-                    <div className="left-container">
-                        <p>Lorem, ipsum dolor.</p>
-                        <p>Quae, ullam eligendi.</p>
-                        <p>Minus, eius dolore!</p>
-                        <p>Neque, voluptatem voluptate?</p>
+                <div className="container">
+                    <div className="left" data-aos="zoom-in" data-aos-offset="0">
+                        <img src={leftBlock} alt="left-block" />
+                        <div className="left-container">
+                            <p>Lorem, ipsum dolor.</p>
+                            <p>Quae, ullam eligendi.</p>
+                            <p>Minus, eius dolore!</p>
+                            <p>Neque, voluptatem voluptate?</p>
+                        </div>
+                    </div>
+                    <div className="right" data-aos="zoom-in" data-aos-offset="0">
+                        <img src={rightBlock} alt="right-block" />
+                        <div className="p-container">
+                            <p>
+                                Our cat family is getting bigger.<br />
+                                We are pleased to present to you a completely new approach to the play-to-earn format, in which each of our cats will receive as much milk as they really deserve.<br />
+                                Thank you for going through this adventure with us!<br />
+                                The adventure turned out to be incredible, but this is only the beginning of our exciting journey.<br />
+                                What's next?<br />
+                                Our game has attracted hundreds of thousands of people with its respect for the player's time, and we want to introduce our second phase of the project, which will be a new game based on NFT battles. The game will run on the Solana network, which is currently the most popular network.
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div className="right" data-aos="zoom-in" data-aos-offset="0">
-                    <img src={rightBlock} alt="right-block" />
-                    <div className="p-container">
-                        <p>
-                            Our cat family is getting bigger.<br />
-                            We are pleased to present to you a completely new approach to the play-to-earn format, in which each of our cats will receive as much milk as they really deserve.<br />
-                            Thank you for going through this adventure with us!<br />
-                            The adventure turned out to be incredible, but this is only the beginning of our exciting journey.<br />
-                            What's next?<br />
-                            Our game has attracted hundreds of thousands of people with its respect for the player's time, and we want to introduce our second phase of the project, which will be a new game based on NFT battles. The game will run on the Solana network, which is currently the most popular network.
-                        </p>
-                    </div>
-                </div>
-            </div>
 
-            {/* NFT Section */}
+                {/* NFT Section */}
+
+            </section>
             <section id="nft" className="q-right">
                 <img src={orangeTailMobile} alt="tail" className="tail mobile" />
                 <img src={orangeTail1080} alt="tail" className="tail" />
@@ -240,7 +243,7 @@ function AppScreen() {
                     </div>
                 </div>
             </section>
-        </section>
+        </>
     );
 }
 
