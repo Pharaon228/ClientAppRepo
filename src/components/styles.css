@@ -51,6 +51,7 @@ img {
 
 #shop {
     height: auto;
+    /* overflow-y: hidden; */
 }
 
 #nft,
@@ -58,9 +59,21 @@ img {
     overflow: visible;
 }
 
+.skin-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.skin-button img {
+    display: block;
+}
+
+
 .topline {
     position: absolute;
-    top: -15%;
+    top: -5%;
     pointer-events: none;
 }
 
@@ -92,10 +105,18 @@ header>div {
 .logo {
     position: absolute;
     width: 500px;
-    left: 50%;
+    left: 47%;
     transform: translateX(-50%) !important;
     top: -100px;
     pointer-events: none;
+}
+
+.logo-text {
+    position: absolute;
+    top: 90px;
+    left: -7%;
+    width: 130%;
+    max-width: none;
 }
 
 .int {
@@ -129,7 +150,6 @@ header>div {
 }
 
 p {
-    position: absolute;
     top: 80px;
     right: 50px;
     left: 50px;
@@ -140,13 +160,50 @@ p {
 
 }
 
+.p-container {
+    overflow-y: auto;
+    height: 380px;
+}
+
+.p-container::-webkit-scrollbar,
+.airdrop-text .text::-webkit-scrollbar {
+    width: 12px;
+    height: 30px;
+    max-height: 30px;
+}
+
+.p-container::-webkit-scrollbar-track,
+.airdrop-text .text::-webkit-scrollbar-track {
+    background: rgb(66, 66, 66);
+    border-radius: 16px;
+    border: 2px solid #000;
+    height: 30px;
+    max-height: 30px;
+}
+
+.p-container::-webkit-scrollbar-thumb,
+.airdrop-text .text::-webkit-scrollbar-thumb {
+    background-color: #fff254;
+    border-radius: 20px;
+    border: 2px solid #000;
+    height: 30px;
+    max-height: 30px;
+}
+
 .left {
     width: 40%;
     position: relative;
+    background-image: url(assets/img/left-white.png);
+    background-size: 100% 100%;
 }
 
 .right {
     width: 60%;
+    background-image: url(assets/img/right.png);
+    background-size: 100% 100%;
+    height: 480px;
+    padding: 80px;
+    padding-top: 60px;
 }
 
 .left-container {
@@ -163,9 +220,8 @@ p {
 }
 
 .right p {
-    left: 70px;
-    top: 60px;
-    font-size: 17px;
+    font-size: 17.5px;
+    padding-left: 10px;
 }
 
 .flex {
@@ -315,11 +371,20 @@ section.q-right .question {
 
 .airdrop-text {
     position: relative;
+    background-image: url(assets/img/left-white.png);
+    background-size: 100% 100%;
+    padding: 80px 50px;
+}
+
+.airdrop-text .text {
+    height: 700px;
+    overflow-y: auto;
 }
 
 .airdrop-text p {
+    position: static;
     margin: 50px;
-    font-size: 32px;
+    font-size: 40px;
 }
 
 .screens-2 {
@@ -501,6 +566,10 @@ section.q-right .question {
     .question {
         width: 150px;
     }
+
+    .airdrop-text .text {
+        height: 400px;
+    }
 }
 
 @media(max-width: 1370px) {
@@ -619,6 +688,10 @@ section.q-right .question {
         margin-top: -100px;
     }
 
+    .logo-text {
+        top: 70px;
+    }
+
     .container {
         flex-direction: column-reverse;
         margin-top: 0;
@@ -648,7 +721,7 @@ section.q-right .question {
     }
 
     .left {
-        background-image: url(assets/img/mlkKntnr.png);
+        background-image: url(assets/img/left-white.png);
         background-size: 100% 100%;
         width: 220px;
         height: 220px;
@@ -664,7 +737,7 @@ section.q-right .question {
         background-image: url(assets/img/right.png);
         background-size: 100% 100%;
         height: 250px;
-        overflow: scroll;
+        overflow: visible;
         width: 100%;
     }
 
@@ -676,7 +749,6 @@ section.q-right .question {
         margin: 0;
         font-size: 16px;
         -webkit-text-stroke: 0.5px #000;
-
     }
 
     .left p {
@@ -698,28 +770,6 @@ section.q-right .question {
         padding-right: 20px;
         padding-top: 5px;
         overflow-y: scroll;
-    }
-
-    .p-container::-webkit-scrollbar {
-        width: 12px;
-        height: 30px;
-        max-height: 30px;
-    }
-
-    .p-container::-webkit-scrollbar-track {
-        background: rgb(66, 66, 66);
-        border-radius: 16px;
-        border: 2px solid #000;
-        height: 30px;
-        max-height: 30px;
-    }
-
-    .p-container::-webkit-scrollbar-thumb {
-        background-color: #fff254;
-        border-radius: 20px;
-        border: 2px solid #000;
-        height: 30px;
-        max-height: 30px;
     }
 
     .flex {
@@ -869,7 +919,7 @@ section.q-right .question {
     .airdrop-text {
         margin-top: -100px;
         margin-bottom: 30px;
-        background: url(assets/img/mlkKntnr.png);
+        background: url(assets/img/left-white.png);
         background-size: 100% 100%;
         height: 300px;
         position: relative;
@@ -881,19 +931,17 @@ section.q-right .question {
     }
 
     .airdrop-text p {
-        position: absolute;
         margin: 0;
         font-size: 20px;
     }
 
-    .airdrop-text .p-container {
-        top: 40px;
-        height: 230px;
+    .airdrop-text {
+        padding: 40px;
     }
 
-    .airdrop-text .p-container p {
-        top: 0;
-        right: 10px;
+    .airdrop-text .text {
+        padding-left: 10px;
+        height: 220px;
     }
 
     .screens-2 {
@@ -1032,6 +1080,16 @@ section.q-right .question {
     .tail.wide {
         display: block;
     }
+
+    .right {
+        height: 680px;
+        padding: 160px;
+        padding-top: 80px;
+    }
+
+    .p-container {
+        height: 580px;
+    }
 }
 
 @media(min-width: 1921px) and (max-width: 2600px) {
@@ -1042,6 +1100,10 @@ section.q-right .question {
 }
 
 @media(min-width: 2601px) and (max-width: 4000px) {
+    .logo-text {
+        top: 150px;
+    }
+
     p {
         font-size: 48px;
         top: 90px;
@@ -1050,6 +1112,10 @@ section.q-right .question {
 
     .right p {
         left: 120px;
+    }
+
+    .airdrop-text .text {
+        height: 1000px;
     }
 
     .airdrop-text p {
@@ -1134,11 +1200,6 @@ section.q-right .question {
 
     p {
         -webkit-text-stroke: 2px #000;
-        text-shadow:
-            -1px -1px 0 #000,
-            1px -1px 0 #000,
-            -1px 1px 0 #000,
-            1px 1px 0 #000;
     }
 
     .left p {
@@ -1170,17 +1231,26 @@ section.q-right .question {
     }
 
     #shop {
-        /* margin-top: 500px; */
-        /* overflow: hidden; */
         height: auto;
     }
 }
 
 @media(min-width: 3600px) {
+    .right {
+        height: 800px;
+        padding-top: 120px;
+    }
+
+    .p-container {
+        height: 700px;
+    }
+
     .right p {
-        font-size: 35px;
-        top: 110px;
-        left: 177px;
-        right: 140px;
+        font-size: 32px;
+    }
+
+    .airdrop-text .text {
+        height: 1200px;
+        padding-top: 50px;
     }
 }

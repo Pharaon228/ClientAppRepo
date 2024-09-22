@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, CSSProperties } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 //simport { motion } from 'framer-motion';
 import DefaultCicle2 from 'assets/images/skins/Cycle2Default.gif';
 import DefaultCicle3 from 'assets/images/skins/Cycle3Default.gif';
@@ -17,7 +17,7 @@ import chesterActiveIcon from 'assets/images/skins/extralog.png';
 //import RobotAnimation1 from 'assets/images/skins/Rob2.gif';
 //import RobotAnimation2 from 'assets/images/skins/Rob3.gif';
 import catAppLogo from 'assets/images/logo.png';
-import catAppLogoShadow from 'assets/images/logoShadow.png';
+//import catAppLogoShadow from 'assets/images/logoShadow.png';
 
 
 interface Skin {
@@ -50,24 +50,12 @@ interface Digit {
 }
 
 const CatContainer: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  //const containerRef = useRef<HTMLDivElement>(null);
   const [selectedSkin, setSelectedSkin] = useState(skins[0]); // Скин по умолчанию
   const [currentAnimation, setCurrentAnimation] = useState(selectedSkin.gifTap);
   const [digits] = useState<Digit[]>([]);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationFrameRefs = useRef<number[]>([]);
-  const [canvasSize, setCanvasSize] = useState<{
-    width: number
-    height: number
-  }>({ width: 0, height: 0 })
-  useEffect(() => {
-    if (containerRef.current) {
-      setCanvasSize({
-        width: containerRef.current.clientWidth,
-        height: containerRef.current.clientHeight,
-      })
-    }
-  }, [])
 
 
   useEffect(() => {
@@ -179,118 +167,47 @@ const CatContainer: React.FC = () => {
     </>
   );
   */}
-  const renderCat = () => (
-    <div style={catStyle}>
-      <img src={currentAnimation} alt="Cat animation" style={imgStyle} />
-    </div>
-  );
 
   const renderSkinSelectors = () => (
-    <div style={skinSelectorStyle}>
-      {skins.map((skin) => (
-        <button key={skin.id} onClick={() => handleSkinSelect(skin)} style={circleButtonStyle}>
-          <img src={skin.imageSrc} alt={skin.name} style={circleImgStyle} />
-        </button>
-      ))}
+    <div>
+      {skins.map((skin) => {
+
+        const buttonStyle = skin.id === 'extra' ? {
+          transform: 'scale(1.25) translateY(7px)',
+
+        } : {};
+
+        return (
+          <button
+            key={skin.id}
+            onClick={() => handleSkinSelect(skin)}
+            className="skin-button"
+            style={buttonStyle}
+          >
+            <img src={skin.imageSrc} alt={skin.name} />
+          </button>
+        );
+      })}
     </div>
   );
+
+
 
   return (
-    <div ref={containerRef} className="flex -ml-24">
-
-      <div className=" items-center justify-center w-full h-full ">
-        {/* Центральный кот */}
-        <div className=" flex flex-col items-center justify-center w-full h-full">
-          {renderCat()}
-          <img src={catAppLogo} alt="Cat logo" style={logoStyle} />
-          <img src={catAppLogoShadow} alt="Cat logo" style={logoShadowStyle} />
-          {/*{renderRobots()} */}
-          {renderSkinSelectors()}
-        </div>
-
-        {/* 
-        <div className="flex justify-center items-center">
-
-        </div>
-        */}
+    <>
+      <div className="logo" data-aos="zoom-out">
+        <img src={currentAnimation} alt="catap" />
+        <img src={catAppLogo} alt="catap" className="logo-text" />
       </div>
+      <div className="int" data-aos="fade-up">
+        {renderSkinSelectors()}
+      </div>
+    </>
 
-
-      Канвас для цифр
-      <canvas
-        className="absolute top-0 left-0 w-full h-full z-20 pointer-events-none"
-        ref={canvasRef}
-        width={canvasSize.width}
-        height={canvasSize.height}
-      />
-    </div>
   );
 
 };
-const logoShadowStyle: CSSProperties = {
-  width: '1200px',
-  height: '1200px',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  position: 'absolute',
-  top: "22rem",
-  left: '52%',
-  zIndex: '20',
-  transform: 'translate(-50%, -50%)',
 
-};
-// Стили
-const catStyle: CSSProperties = {
-  width: '700px',
-  height: '700px',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  position: 'relative',
-  marginTop: '-4rem',
-  zIndex: '21',
-};
-
-const logoStyle: CSSProperties = {
-  width: '600px',
-  height: '600px',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  marginTop: '-30rem',
-  zIndex: '22',
-  marginLeft: '2rem',
-};
-
-const imgStyle: CSSProperties = {
-  width: '100%',
-  height: '100%',
-};
-
-const skinSelectorStyle: CSSProperties = {
-  display: 'flex',
-  alignItems: 'center',
-  gap: '0.6rem',
-  marginTop: '-16rem',
-  zIndex: '23',
-  marginLeft: "3rem"
-};
-
-const circleButtonStyle: CSSProperties = {
-  width: '80px',
-  height: '80px',
-  borderRadius: '50%',
-  overflow: 'hidden',
-
-  backgroundColor: 'transparent',
-  cursor: 'pointer',
-};
-
-const circleImgStyle: CSSProperties = {
-  width: '100%',
-  height: '100%',
-};
 
 {/* 
 const robotContainerStyle: CSSProperties = {
