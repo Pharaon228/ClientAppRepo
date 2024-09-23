@@ -169,12 +169,10 @@ const CatContainer: React.FC = () => {
   */}
 
   const renderSkinSelectors = () => (
-    <div>
+    <div className="skin-selector-container">
       {skins.map((skin) => {
-
         const buttonStyle = skin.id === 'extra' ? {
           transform: 'scale(1.25) translateY(7px)',
-
         } : {};
 
         return (
@@ -184,12 +182,13 @@ const CatContainer: React.FC = () => {
             className="skin-button"
             style={buttonStyle}
           >
-            <img src={skin.imageSrc} alt={skin.name} />
+            <img src={skin.imageSrc} alt={skin.name} className="skin-image" />
           </button>
         );
       })}
     </div>
   );
+
 
 
 

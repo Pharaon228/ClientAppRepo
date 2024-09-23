@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import yellowTailMobile from 'assets/img/yellow-tail-mobile.png';
 import yellowTail1080 from 'assets/img/yellow-tail-1080.png';
 import yellowTail4k from 'assets/img/yellow-tail-4k.png';
-import question from 'assets/img/question.png';
+import question from 'assets/img/redButton.gif';
 import rightBlock from 'assets/img/right.png';
 import sb1 from 'assets/img/sb1.png';
 import sb2 from 'assets/img/sb2.png';
@@ -58,7 +58,27 @@ const GameSection: React.FC = () => {
             />
 
             {/* Инфоблок */}
-            <div className={`infoblock ${isInfoBlockActive ? 'active' : ''}`} data-infoblock="2">
+            <div className={`infoblock ${isInfoBlockActive ? 'active' : ''}`} data-infoblock="2" style={{ display: 'flex', alignItems: 'center' }}>
+                <style>
+                    {`
+            .game-img-1 {
+                width: auto;
+                height: 20%;
+                margin-right: 10px;
+            }
+
+            @media (max-width: 768px) {
+                .game-img-1 {
+                    position: absolute;
+                    bottom: 5%;
+                    right: 50%;
+                    transform: translateX(50%);
+                    margin-right: 0;
+                }
+            }
+        `}
+                </style>
+                <img src={game} alt="game" className="game-img-1" />
                 <p>
                     This is the main thing that awaits you in the new phase.<br />
                     <br />
@@ -71,7 +91,7 @@ const GameSection: React.FC = () => {
                     - cats can be rented to other players, for which you will receive $MLK or $SOL and % of milk from his victories<br />
                     - it will be possible to rent for a certain number of battles, or on a daily basis
                 </p>
-                <div className="close" onClick={handleCloseInfoBlock}>
+                <div className="close" onClick={handleCloseInfoBlock} style={{ position: 'absolute', top: '10%', right: '10%', cursor: 'pointer' }}>
                     &times;
                 </div>
             </div>

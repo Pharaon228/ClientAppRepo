@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import orangeTailMobile from 'assets/img/orange-tail-mobile.png';
 import orangeTail1080 from 'assets/img/orange-tail-1080.png';
 import orangeTail4k from 'assets/img/orange-tail-4k.png';
-import question from 'assets/img/question.png';
+import question from 'assets/img/redButton.gif';
 import nft from 'assets/img/nft.png';
 import rightBlock from 'assets/img/right.png';
 import nft1 from 'assets/img/nft1.png';
@@ -56,11 +56,31 @@ const NFTSlider: React.FC = () => {
     };
 
     return (
-        <section id="nft" className="q-right">
+        <section id="nft">
             <img src={orangeTailMobile} alt="tail" className="tail mobile" />
             <img src={orangeTail1080} alt="tail" className="tail" />
             <img src={orangeTail4k} alt="tail" className="tail wide" />
-            <div className={`infoblock ${activeInfoBlock === 1 ? 'active' : ''}`} data-infoblock="1">
+            <div className={`infoblock ${activeInfoBlock === 1 ? 'active' : ''}`} data-infoblock="1" style={{ display: 'flex', alignItems: 'center' }}>
+                <style>
+                    {`
+            .nft-img-1 {
+                width: auto;
+                height: 20%;
+                margin-right: 10px;
+            }
+
+            @media (max-width: 768px) {
+                .nft-img-1 {
+                    position: absolute;
+                    bottom: 10%;
+                    right: 50%;
+                    transform: translateX(50%);
+                    margin-right: 0;
+                }
+            }
+        `}
+                </style>
+                <img src={nft} alt="game" className="nft-img-1" />
                 <p>
                     The basis of our game will be NFT battles, as a result of which users will earn $MLK. <br />
                     <br />
@@ -68,7 +88,7 @@ const NFTSlider: React.FC = () => {
                     <br />
                     We will have 5000 whitelist users and 10000 NFTs. The whitelist itself can be obtained by completing tasks in our game that are already available for completion. Each whitelist user will be able to mint 2 nfts
                 </p>
-                <div className="close" onClick={handleCloseInfoBlock}>&times;</div>
+                <div className="close" onClick={handleCloseInfoBlock} style={{ position: 'absolute', top: '10%', right: '10%', cursor: 'pointer' }}>&times;</div>
 
             </div>
 

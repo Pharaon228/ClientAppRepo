@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import topline from 'assets/img/topline.png';
 import nft from 'assets/img/nft.png';
 import game from 'assets/img/game.png';
@@ -34,7 +34,7 @@ import grayTail4k from 'assets/img/gray-tail-4k.png';
 import airdrop from 'assets/img/airdrop.png';
 import shop from 'assets/img/shop.png';
 //import aboutUs from 'assets/images/buttons/AboutUs.png';
-
+import CountUp from 'react-countup';
 //import CountUp from 'react-countup';
 //import { useInView } from 'react-intersection-observer';
 
@@ -45,9 +45,22 @@ import CatContainer from './CatContainer';
 import NFTSlider from './NFTSlider';
 import GameSection from './game';
 import ShopSection from './shop';
+import aboutUs from 'assets/img/abus.png';
+import Loader from './loader';
 //import Loader from './loader';
 
 function AppScreen() {
+    const [loading, setLoading] = useState(true);
+    useEffect(() => {
+        const secondTimeout = setTimeout(() => {
+            setLoading(false);
+        }, 8500);
+
+        return () => {
+            clearTimeout(secondTimeout);
+        };
+    }, []);
+
     useEffect(() => {
 
         AOS.init({
@@ -75,79 +88,105 @@ function AppScreen() {
 
     return (
         <div>
-            <section id="main">
-                <img src={topline} alt="topline" className="topline" />
+            {loading ?
+                (
+                    <Loader />
+                ) : (
+                    <>
+                        <section id="main">
 
-                <header>
-                    <div data-aos="fade-right">
-                        <a href="#nft"><img src={nft} alt="nft" className="hover" /></a>
-                        <a href="#game">
-                            <img src={game} alt="game" className="hover" style={{
-                                scale: "1.2"
-                            }} /></a>
-                    </div>
-                    <div data-aos="fade-left">
-                        <a href="#shop"><img src={shop} alt="shop" className="hover" style={{
-                            scale: "0.95"
-                        }} /></a>
-                        <a href="#airdrop"><img src={airdrop} alt="airdrop" className="hover" style={{
-                            scale: "1.2"
-                        }} /></a>
+                            <img src={topline} alt="topline" className="topline" />
 
-                    </div>
-                </header>
+                            <header>
+                                <div data-aos="fade-right">
+                                    <a href="#nft"><img src={nft} alt="nft" className="hover" style={{
+                                        scale: "0.68"
+                                    }} /></a>
+                                    <a href="#game">
+                                        <img src={game} alt="game" className="hover" style={{
+                                            transform: 'scale(0.85) translateX(-15px)',
+                                        }} /></a>
+                                </div>
+                                <div data-aos="fade-left">
+                                    <a href="#shop"><img src={shop} alt="shop" className="hover" style={{
+                                        transform: 'scale(0.665) translateX(15px)',
+                                    }} /></a>
+                                    <a href="#airdrop"><img src={airdrop} alt="airdrop" className="hover" style={{
+                                        scale: "0.85"
+                                    }} /></a>
+                                </div>
+                            </header>
 
-                <CatContainer />
+                            <CatContainer />
 
-                <div className="container">
-                    <div className="left" data-aos="zoom-in" data-aos-offset="0">
-                        <div className="left-container">
-                            <p>Total Players - 55555</p>
-                            <p>Total Players - 55555</p>
-                            <p>Total Players - 55555</p>
-                            <p>Total Players - 55555</p>
-                        </div>
-                    </div>
-                    <div className="right" data-aos="zoom-in" data-aos-offset="0">
-                        <div className="p-container">
-                            <p>
-                                Our cat family is getting bigger.<br />
-                                We are pleased to present to you a completely new approach to the play-to-earn format, in which each of our cats will receive as much milk as they really deserve.<br />
-                                Thank you for going through this adventure with us!<br />
-                                The adventure turned out to be incredible, but this is only the beginning of our exciting journey.<br />
-                                What's next?<br />
-                                Our game has attracted hundreds of thousands of people with its respect for the player's time, and we want to introduce our second phase of the project, which will be a new game based on NFT battles. The game will run on the Solana network, which is currently the most popular network.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            {/* NFT Section */}
-            <NFTSlider />
+                            <div className="container">
+                                <div className="left" data-aos="zoom-in" data-aos-offset="0">
+                                    <div className="left-container stats-container" style={{ textAlign: 'center' }}>
+                                        <p>
+                                            TOTAL PLAYERS <br />+
+                                            <span className="countup">
+                                                <CountUp end={360000} duration={4} separator="'" />
+                                            </span>
+                                            <br /><br />
+                                            MONTHLY USERS <br />+
+                                            <span className="countup">
+                                                <CountUp end={70000} duration={4} separator="'" />
+                                            </span>
+                                            <br /><br />
+                                            DAILY USERS <br />+
+                                            <span className="countup">
+                                                <CountUp end={30000} duration={4} separator="'" />
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="right" data-aos="zoom-in" data-aos-offset="0">
+                                    <div className="p-container">
+                                        <p>
+                                            Our cat family is getting bigger.<br />
+                                            We are pleased to present to you a completely new approach to the play-to-earn format, in which each of our cats will receive as much milk as they really deserve.<br />
+                                            Thank you for going through this adventure with us!<br />
+                                            The adventure turned out to be incredible, but this is only the beginning of our exciting journey.<br />
+                                            What's next?<br />
+                                            Our game has attracted hundreds of thousands of people with its respect for the player's time, and we want to introduce our second phase of the project, which will be a new game based on NFT battles. The game will run on the Solana network, which is currently the most popular network.
+                                        </p>
+                                    </div>
+                                    <img src={aboutUs} alt="abus" className="corner-image-left" />
+                                </div>
+                            </div>
+                        </section>
+                        {/* NFT Section */}
+                        <NFTSlider />
 
-            {/* Game Section */}
-            <GameSection />
-            {/* Shop Section */}
-            <ShopSection />
+                        {/* Game Section */}
+                        <GameSection />
 
-            {/* Airdrop Section */}
-            <section id="airdrop">
-                <img src={grayTailMobile} alt="tail" className="tail mobile" />
-                <img src={grayTail1080} alt="tail" className="tail" />
-                <img src={grayTail4k} alt="tail" className="tail wide" />
-                <div className="flex">
-                    <div data-aos="fade-right">
-                        <img src={airdrop} alt="airdrop" className="airdrop" />
-                    </div>
-                    <div className="airdrop-text" data-aos="fade-left">
-                        <div className="text">
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-                            <p>Dicta quos quibusdam totam eos delectus. Quaerat accusamus officiis odio ipsa?</p>
-                            <p>Maxime laudantium ipsum eos adipisci, similique culpa animi doloremque dicta!</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                        {/* Shop Section */}
+                        <ShopSection />
+
+                        {/* Airdrop Section */}
+                        <section id="airdrop">
+                            <img src={grayTailMobile} alt="tail" className="tail mobile" />
+                            <img src={grayTail1080} alt="tail" className="tail" />
+                            <img src={grayTail4k} alt="tail" className="tail wide" />
+                            <div className="flex">
+                                <div data-aos="fade-right">
+                                    <img src={airdrop} alt="airdrop" className="airdrop" />
+                                </div>
+                                <div className="airdrop-text" data-aos="fade-left">
+                                    <div className="text">
+                                        <p>And finally, we will do an airdrop of $MLK.<br />
+                                            You can get it if you are an active player, or have purchased NFT, or use the services of our shop, renting out or renting cats.<br />
+                                            <br />
+                                            More activity - more reward<br />
+                                            <br />
+                                            Airdrop will happen at Q4 of 2024, stay tuned</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </>
+                )}
         </div>
     );
 

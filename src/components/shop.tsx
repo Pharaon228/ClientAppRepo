@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import yellowTailMobile from 'assets/img/yellow-tail-mobile.png';
 import yellowTail1080 from 'assets/img/yellow-tail-1080.png';
 import yellowTail4k from 'assets/img/yellow-tail-4k.png';
-import question from 'assets/img/question.png';
+import question from 'assets/img/redButton.gif';
 import shop from 'assets/img/shop.png';
 import sb5 from 'assets/img/sb5.png';
 import sb6 from 'assets/img/sb6.png';
+
 import { Fancybox } from '@fancyapps/ui';
 const ShopSection: React.FC = () => {
     const [activeSlide, setActiveSlide] = useState(0);
@@ -42,12 +43,46 @@ const ShopSection: React.FC = () => {
                 onClick={handleQuestionClick}
             />
 
-            <div className={`infoblock ${activeInfoBlock === 3 ? 'active' : ''}`} data-infoblock="3">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Earum architecto quisquam odio fugiat sapiente, voluptatem eum laborum expedita iusto. Similique nobis quod nesciunt minima eos voluptate perspiciatis rerum sunt numquam, neque accusantium odit, rem labore ab corporis molestiae officiis veniam dolorem distinctio ipsum, animi natus at excepturi repudiandae. Ex, quam!
-                <div className="close" onClick={handleCloseInfoBlock}>
+            <div className={`infoblock ${activeInfoBlock === 3 ? 'active' : ''}`} data-infoblock="3" style={{ display: 'flex', alignItems: 'center' }}>
+                <style>
+                    {`
+            .shop-img-1 {
+                width: auto;
+                height: 20%;
+                margin-right: 10px;
+            }
+
+            @media (max-width: 768px) {
+                .shop-img-1 {
+                    position: absolute;
+                    bottom: 5%;
+                    right: 50%;
+                    transform: translateX(50%);
+                    margin-right: 0;
+                }
+            }
+        `}
+                </style>
+                <img src={shop} alt="game" className="shop-img-1" />
+                <p>
+                    Also we will open our own SHOP!<br />
+                    <br />
+                    In shop you can buy and sell your cats for $MLK or $SOL.<br />
+                    <br />
+                    Also, cats can be rented to other players, for which you will receive $MLK or $SOL and stable % of milk for his victories.
+                    It will be possible to rent for a certain number of battles, or on a daily basis<br />
+                    <br />
+                    Shop will play main role in our future plans on tokenomics. Whole $MLK royalties will be burned forever each week.<br />
+                    <br />
+                    Also, we will buy $MLK via $SOL royalties and burn it.<br />
+                    <br />
+                    We have many plans for the future, exactly how we will deal with coin inflation and how to make the gaming economy sustainable
+                </p>
+                <div className="close" onClick={handleCloseInfoBlock} style={{ position: 'absolute', top: '10%', right: '10%', cursor: 'pointer' }}>
                     &times;
                 </div>
             </div>
+
 
             <div className="flex">
                 <div data-aos="fade-right">
