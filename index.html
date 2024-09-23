@@ -18,15 +18,26 @@
   <div id="root"></div>
 
   <script>
+
+    function resetZoom() {
+      if (window.visualViewport && window.visualViewport.scale !== 1) {
+        document.body.style.transform = 'scale(1)';
+        document.body.style.transformOrigin = '0 0';
+        document.body.style.width = '100%';
+      }
+    }
+
     document.addEventListener('wheel', function (event) {
       if (event.ctrlKey) {
         event.preventDefault();
+        resetZoom();
       }
     }, { passive: false });
 
     document.addEventListener('touchmove', function (event) {
       if (event.scale !== 1) {
         event.preventDefault();
+        resetZoom();
       }
     }, { passive: false });
 
@@ -35,9 +46,18 @@
       let now = (new Date()).getTime();
       if (now - lastTouchEnd <= 300) {
         event.preventDefault();
+        resetZoom();
       }
       lastTouchEnd = now;
     }, false);
+
+    window.visualViewport.addEventListener('resize', function () {
+      resetZoom();
+    });
+
+    window.addEventListener('load', function () {
+      resetZoom();
+    });
   </script>
 
 
