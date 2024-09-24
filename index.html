@@ -10,8 +10,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
 
   <title>Vite + React + TS</title>
-  <script type="module" crossorigin src="/ClientAppRepo/assets/js/index-C_aHZV4s.js"></script>
-  <link rel="stylesheet" crossorigin href="/ClientAppRepo/assets/css/index-CYo72xVi.css">
+  <script type="module" crossorigin src="/ClientAppRepo/assets/js/index-iOIQ_nl2.js"></script>
+  <link rel="stylesheet" crossorigin href="/ClientAppRepo/assets/css/index-C5LAau2U.css">
 <link rel="manifest" href="/ClientAppRepo/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/ClientAppRepo/registerSW.js"></script></head>
 
 <body>
@@ -30,14 +30,14 @@
     document.addEventListener('wheel', function (event) {
       if (event.ctrlKey) {
         event.preventDefault();
-        resetZoom();
+        //resetZoom();
       }
     }, { passive: false });
 
     document.addEventListener('touchmove', function (event) {
       if (event.scale !== 1) {
         event.preventDefault();
-        resetZoom();
+        //resetZoom();
       }
     }, { passive: false });
 
@@ -46,7 +46,7 @@
       let now = (new Date()).getTime();
       if (now - lastTouchEnd <= 300) {
         event.preventDefault();
-        resetZoom();
+        //resetZoom();
       }
       lastTouchEnd = now;
     }, false);
@@ -56,7 +56,7 @@
     });
 
     window.addEventListener('load', function () {
-      resetZoom();
+      //resetZoom();
     });
   </script>
 
