@@ -5,61 +5,13 @@
   <meta charset="UTF-8" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
-
-  <title>Vite + React + TS</title>
-  <script type="module" crossorigin src="/ClientAppRepo/assets/js/index-iOIQ_nl2.js"></script>
-  <link rel="stylesheet" crossorigin href="/ClientAppRepo/assets/css/index-C5LAau2U.css">
+  <title>Mint</title>
+  <script type="module" crossorigin src="/ClientAppRepo/assets/js/index-BFnT-b07.js"></script>
+  <link rel="stylesheet" crossorigin href="/ClientAppRepo/assets/css/index-CLjdGagK.css">
 <link rel="manifest" href="/ClientAppRepo/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/ClientAppRepo/registerSW.js"></script></head>
 
 <body>
   <div id="root"></div>
-
-  <script>
-
-    function resetZoom() {
-      if (window.visualViewport && window.visualViewport.scale !== 1) {
-        document.body.style.transform = 'scale(1)';
-        document.body.style.transformOrigin = '0 0';
-        document.body.style.width = '100%';
-      }
-    }
-
-    document.addEventListener('wheel', function (event) {
-      if (event.ctrlKey) {
-        event.preventDefault();
-        //resetZoom();
-      }
-    }, { passive: false });
-
-    document.addEventListener('touchmove', function (event) {
-      if (event.scale !== 1) {
-        event.preventDefault();
-        //resetZoom();
-      }
-    }, { passive: false });
-
-    let lastTouchEnd = 0;
-    document.addEventListener('touchend', function (event) {
-      let now = (new Date()).getTime();
-      if (now - lastTouchEnd <= 300) {
-        event.preventDefault();
-        //resetZoom();
-      }
-      lastTouchEnd = now;
-    }, false);
-
-    window.visualViewport.addEventListener('resize', function () {
-      resetZoom();
-    });
-
-    window.addEventListener('load', function () {
-      //resetZoom();
-    });
-  </script>
-
 
 </body>
 
